@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+}
+
+#boardOne {
+  display: flex;
+  flex-direction: column;
+}
+
+#boardTwo {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  border: 1px black solid;
+  width: 25px;
+  height: 25px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+}
+
+#place_carrier {
+  width: 125px;
+  height: 25px;
+  background-color: grey;
+  border: 1px solid black;
+  cursor: move;
+}
+
+.draggable.dragging {
+  opacity: 0.5;
+}
