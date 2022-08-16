@@ -6,7 +6,8 @@
 
 body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 50px;
 }
 
 #boardOne {
@@ -28,7 +29,27 @@ body {
 .row {
   display: flex;
   flex-direction: row;
-  width: 300px;
+}
+
+.carrier {
+  height: 125px;
+  width: 125px;
+}
+.battleship {
+  height: 100px;
+  width: 100px;
+}
+.destroyer {
+  height: 75px;
+  width: 75px;
+}
+.submarine {
+  height: 75px;
+  width: 75px;
+}
+.patrolboat {
+  height: 50px;
+  width: 50px;
 }
 
 #place_carrier {
@@ -38,7 +59,61 @@ body {
   border: 1px solid black;
   cursor: move;
 }
+#place_battleship {
+  width: 100px;
+  height: 25px;
+  background-color: purple;
+  border: 1px solid black;
+  cursor: move;
+}
+#place_destroyer {
+  width: 75px;
+  height: 25px;
+  background-color: pink;
+  border: 1px solid black;
+  cursor: move;
+}
+#place_submarine {
+  width: 75px;
+  height: 25px;
+  background-color: orangered;
+  border: 1px solid black;
+  cursor: move;
+}
+#place_patrolboat {
+  width: 50px;
+  height: 25px;
+  background-color: green;
+  border: 1px solid black;
+  cursor: move;
+}
 
 .draggable.dragging {
   opacity: 0.5;
+}
+
+.boatBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+}
+
+.boatRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+#harbor {
+  width: 250px;
+  height: 250px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+  margin-right: 50px;
 }
