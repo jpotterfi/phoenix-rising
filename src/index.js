@@ -22,6 +22,22 @@ draggables.forEach((draggable) => {
     draggable.classList.remove("dragging");
   });
 });
+
+const segmented__carrier = document.getElementById("segmented__carrier");
+segmented__carrier.addEventListener("dblclick", function () {
+  console.log("im clicked");
+  const segmented__carrier = document.getElementById("segmented__carrier");
+  if (segmented__carrier.style.flexDirection == "row") {
+    segmented__carrier.style.flexDirection = "column";
+  } else if (segmented__carrier.style.flexDirection == "column") {
+    segmented__carrier.style.flexDirection = "row";
+  }
+});
+
+// carrier.addEventListener("dblclick", function () {
+//   // carrier.style.transform = "rotate(90deg)";
+// });
+
 //first value is the row, second value is the column
 
 // let gameboard = gameboardFactory();
