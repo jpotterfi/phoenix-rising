@@ -65,7 +65,9 @@ function getCurrentlyPlacingOrientation(ship) {
   }
 }
 
-function getCarrierOrientation() {}
+function getCarrierOrientation() {
+  return carrierOrientation;
+}
 
 function setCarrierOrientation(num) {
   carrierOrientation = num;

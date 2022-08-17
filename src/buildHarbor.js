@@ -1,3 +1,13 @@
+import {
+  getCarrierOrientation,
+  getCurrentlyPlacingShip,
+  setCarrierOrientation,
+  setCurrentlyPlacingShip,
+  setDestroyerOrientation,
+  setPatrolboatOrientation,
+  setSubmarineOrientation,
+} from "./currentlyPlacingShip";
+
 function buildHarbor() {
   //element instantiation
   let content = document.getElementById("content");
@@ -32,12 +42,104 @@ function buildHarbor() {
   segmented__submarine.draggable = "true";
   segmented__submarine.title = "Submarine";
   let boatBox__patrolboat = document.createElement("div");
-  boatBox__submarine.id = "boatBox__patrolboat";
+  boatBox__patrolboat.id = "boatBox__patrolboat";
   let segmented__patrolboat = document.createElement("div");
   segmented__patrolboat.id = "segmented__patrolboat";
   segmented__patrolboat.draggable = "true";
   segmented__patrolboat.title = "Patrol Boat";
   //element instantiation
+  //draggables
+  const draggables = document.querySelectorAll(".draggable");
+
+  draggables.forEach((draggable) => {
+    draggable.addEventListener("dragstart", () => {
+      console.log("drag start");
+      draggable.classList.add("dragging");
+    });
+    draggable.addEventListener("dragend", () => {
+      draggable.classList.remove("dragging");
+    });
+  });
+  //draggables
+  //event listeners
+  segmented__carrier.style.flexDirection = "row";
+  segmented__carrier.addEventListener("dblclick", function () {
+    if (segmented__carrier.style.flexDirection == "row") {
+      segmented__carrier.style.flexDirection = "column";
+      setCarrierOrientation(1);
+      console.log(getCarrierOrientation());
+    } else if (segmented__carrier.style.flexDirection == "column") {
+      segmented__carrier.style.flexDirection = "row";
+      setCarrierOrientation(0);
+      console.log(getCarrierOrientation());
+    }
+  });
+  segmented__carrier.addEventListener("dragstart", function () {
+    setCurrentlyPlacingShip("carrier");
+    console.log(getCurrentlyPlacingShip());
+  });
+  segmented__battleship.style.flexDirection = "row";
+  segmented__battleship.addEventListener("dblclick", function () {
+    if (segmented__battleship.style.flexDirection == "row") {
+      segmented__battleship.style.flexDirection = "column";
+      setCarrierOrientation(1);
+      console.log(getCarrierOrientation());
+    } else if (segmented__battleship.style.flexDirection == "column") {
+      segmented__battleship.style.flexDirection = "row";
+      setCarrierOrientation(0);
+      console.log(getCarrierOrientation());
+    }
+  });
+  segmented__battleship.addEventListener("dragstart", function () {
+    setCurrentlyPlacingShip("battleship");
+    console.log(getCurrentlyPlacingShip());
+  });
+
+  segmented__destroyer.style.flexDirection = "row";
+  segmented__destroyer.addEventListener("dblclick", function () {
+    if (segmented__destroyer.style.flexDirection == "row") {
+      segmented__destroyer.style.flexDirection = "column";
+      setDestroyerOrientation(1);
+    } else if (segmented__destroyer.style.flexDirection == "column") {
+      segmented__destroyer.style.flexDirection = "row";
+      setDestroyerOrientation(0);
+    }
+  });
+  segmented__destroyer.addEventListener("dragstart", function () {
+    setCurrentlyPlacingShip("destroyer");
+    console.log(getCurrentlyPlacingShip());
+  });
+
+  segmented__submarine.style.flexDirection = "row";
+  segmented__submarine.addEventListener("dblclick", function () {
+    if (segmented__submarine.style.flexDirection == "row") {
+      segmented__submarine.style.flexDirection = "column";
+      setSubmarineOrientation(1);
+    } else if (segmented__submarine.style.flexDirection == "column") {
+      segmented__submarine.style.flexDirection = "row";
+      setSubmarineOrientation(0);
+    }
+  });
+  segmented__submarine.addEventListener("dragstart", function () {
+    setCurrentlyPlacingShip("submarine");
+    console.log(getCurrentlyPlacingShip());
+  });
+
+  segmented__patrolboat.style.flexDirection = "row";
+  segmented__patrolboat.addEventListener("dblclick", function () {
+    if (segmented__patrolboat.style.flexDirection == "row") {
+      segmented__patrolboat.style.flexDirection = "column";
+      setPatrolboatOrientation(1);
+    } else if (segmented__patrolboat.style.flexDirection == "column") {
+      segmented__patrolboat.style.flexDirection = "row";
+      setPatrolboatOrientation(0);
+    }
+  });
+  segmented__patrolboat.addEventListener("dragstart", function () {
+    setCurrentlyPlacingShip("patrolboat");
+    console.log(getCurrentlyPlacingShip());
+  });
+  //event listeners
 
   for (let i = 0; i < 5; i++) {
     let segment = document.createElement("div");
@@ -87,47 +189,3 @@ function buildHarbor() {
   content.appendChild(harbor);
 }
 export { buildHarbor };
-
-// <div id="harbor">
-//   <div class="boatRow">
-//     <div id="boatBox__carrier">
-//       <div draggable="true" id="segmented__carrier" title="Carrier">
-//         <div class="segment"></div>
-//         <div class="segment"></div>
-//         <div class="segment"></div>
-//         <div class="segment"></div>
-//         <div class="segment"></div>
-//       </div>
-//     </div>
-//     <div id="boatBox__battleship">
-//       <div draggable="true" id="segmented__battleship" title="Battleship">
-//         <div class="segment"></div>
-//         <div class="segment"></div>
-//         <div class="segment"></div>
-//         <div class="segment"></div>
-//       </div>
-//     </div>
-//   </div>
-//   <div class="boatRow">
-//     <div id="boatBox__destroyer">
-//       <div draggable="true" id="segmented__destroyer" title="Destroyer">
-//         <div class="segment"></div>
-//         <div class="segment"></div>
-//         <div class="segment"></div>
-//       </div>
-//     </div>
-//     <div id="boatBox__submarine">
-//       <div draggable="true" id="segmented__submarine" title="Submarine">
-//         <div class="segment"></div>
-//         <div class="segment"></div>
-//         <div class="segment"></div>
-//       </div>
-//     </div>
-//     <div id="boatBox__patrolboat">
-//       <div draggable="true" id="segmented__patrolboat" title="Patrol Boat">
-//         <div class="segment"></div>
-//         <div class="segment"></div>
-//       </div>
-//     </div>
-//   </div>
-// </div>;
