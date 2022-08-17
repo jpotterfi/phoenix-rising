@@ -8,6 +8,13 @@ import { gameLoop } from "./gameLoop";
 import { shipFactory } from "./shipFactory";
 import "./style.css";
 import { randomAttack } from "./computerFns/randomAttack";
+import {
+  getCarrierOrientation,
+  setCarrierOrientation,
+  setDestroyerOrientation,
+  setPatrolboatOrientation,
+  setSubmarineOrientation,
+} from "./currentlyPlacingShip";
 
 let isSettingUp = true;
 
@@ -24,16 +31,64 @@ draggables.forEach((draggable) => {
 });
 
 const segmented__carrier = document.getElementById("segmented__carrier");
+segmented__carrier.style.flexDirection = "row";
 segmented__carrier.addEventListener("dblclick", function () {
-  console.log("im clicked");
-  const segmented__carrier = document.getElementById("segmented__carrier");
   if (segmented__carrier.style.flexDirection == "row") {
     segmented__carrier.style.flexDirection = "column";
+    setCarrierOrientation(1);
+    console.log(getCarrierOrientation());
   } else if (segmented__carrier.style.flexDirection == "column") {
     segmented__carrier.style.flexDirection = "row";
+    setCarrierOrientation(0);
+    console.log(getCarrierOrientation());
   }
 });
-
+const segmented__battleship = document.getElementById("segmented__battleship");
+segmented__battleship.style.flexDirection = "row";
+segmented__battleship.addEventListener("dblclick", function () {
+  if (segmented__battleship.style.flexDirection == "row") {
+    segmented__battleship.style.flexDirection = "column";
+    setCarrierOrientation(1);
+    console.log(getCarrierOrientation());
+  } else if (segmented__battleship.style.flexDirection == "column") {
+    segmented__battleship.style.flexDirection = "row";
+    setCarrierOrientation(0);
+    console.log(getCarrierOrientation());
+  }
+});
+const segmented__destroyer = document.getElementById("segmented__destroyer");
+segmented__destroyer.style.flexDirection = "row";
+segmented__destroyer.addEventListener("dblclick", function () {
+  if (segmented__destroyer.style.flexDirection == "row") {
+    segmented__destroyer.style.flexDirection = "column";
+    setDestroyerOrientation(1);
+  } else if (segmented__destroyer.style.flexDirection == "column") {
+    segmented__destroyer.style.flexDirection = "row";
+    setDestroyerOrientation(0);
+  }
+});
+const segmented__submarine = document.getElementById("segmented__submarine");
+segmented__submarine.style.flexDirection = "row";
+segmented__submarine.addEventListener("dblclick", function () {
+  if (segmented__submarine.style.flexDirection == "row") {
+    segmented__submarine.style.flexDirection = "column";
+    setSubmarineOrientation(1);
+  } else if (segmented__submarine.style.flexDirection == "column") {
+    segmented__submarine.style.flexDirection = "row";
+    setSubmarineOrientation(0);
+  }
+});
+const segmented__patrolboat = document.getElementById("segmented__patrolboat");
+segmented__patrolboat.style.flexDirection = "row";
+segmented__patrolboat.addEventListener("dblclick", function () {
+  if (segmented__patrolboat.style.flexDirection == "row") {
+    segmented__patrolboat.style.flexDirection = "column";
+    setPatrolboatOrientation(1);
+  } else if (segmented__patrolboat.style.flexDirection == "column") {
+    segmented__patrolboat.style.flexDirection = "row";
+    setPatrolboatOrientation(0);
+  }
+});
 // carrier.addEventListener("dblclick", function () {
 //   // carrier.style.transform = "rotate(90deg)";
 // });

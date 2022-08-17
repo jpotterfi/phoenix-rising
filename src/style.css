@@ -131,6 +131,10 @@ body {
   margin-left: -1px;
 }
 
+#segmented__carrier:hover {
+  cursor: grab;
+}
+
 #segmented__carrier .segment {
   outline: 1px solid; /* use instead of border */
   margin-top: 1px;
@@ -139,6 +143,118 @@ body {
 }
 
 #boatBox__carrier {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  height: 130px;
+  width: 130px;
+}
+
+#segmented__battleship {
+  display: flex;
+  flex-direction: row;
+  margin-top: -1px;
+  margin-left: -1px;
+}
+
+#segmented__battleship:hover {
+  cursor: grab;
+}
+
+#segmented__battleship .segment {
+  outline: 1px solid; /* use instead of border */
+  margin-top: 1px;
+  margin-left: 1px;
+  background-color: purple;
+}
+
+#boatBox__battleship {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  height: 130px;
+  width: 130px;
+}
+
+#segmented__destroyer {
+  display: flex;
+  flex-direction: row;
+  margin-top: -1px;
+  margin-left: -1px;
+}
+
+#segmented__destroyer:hover {
+  cursor: grab;
+}
+
+#segmented__destroyer .segment {
+  outline: 1px solid; /* use instead of border */
+  margin-top: 1px;
+  margin-left: 1px;
+  background-color: purple;
+}
+
+#boatBox__destroyer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid orangered;
+  height: 130px;
+  width: 130px;
+}
+
+#segmented__submarine {
+  display: flex;
+  flex-direction: row;
+  margin-top: -1px;
+  margin-left: -1px;
+}
+
+#segmented__submarine:hover {
+  cursor: grab;
+}
+
+#segmented__submarine .segment {
+  outline: 1px solid; /* use instead of border */
+  margin-top: 1px;
+  margin-left: 1px;
+  background-color: green;
+}
+
+#boatBox__submarine {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  height: 130px;
+  width: 130px;
+}
+
+#segmented__patrolboat {
+  display: flex;
+  flex-direction: row;
+  margin-top: -1px;
+  margin-left: -1px;
+}
+
+#segmented__patrolboat:hover {
+  cursor: grab;
+}
+
+#segmented__patrolboat .segment {
+  outline: 1px solid; /* use instead of border */
+  margin-top: 1px;
+  margin-left: 1px;
+  background-color: gold;
+}
+
+#boatBox__patrolboat {
   display: flex;
   flex-direction: row;
   justify-content: center;
