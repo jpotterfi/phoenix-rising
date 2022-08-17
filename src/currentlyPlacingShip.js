@@ -5,6 +5,25 @@ let battleshipOrientation = 0;
 let destroyerOrientation = 0;
 let submarineOrientation = 0;
 let patrolboatOrientation = 0;
+let placeCount = 0;
+let isAllPlaced = false;
+
+function increasePlaceCount() {
+  placeCount++;
+  console.log(placeCount);
+}
+
+function getIsAllPlaced() {
+  if (placeCount == 5) {
+    isAllPlaced = true;
+    return isAllPlaced;
+  }
+}
+
+function resetPlacement() {
+  placeCount = 0;
+  isAllPlaced = false;
+}
 
 function setCurrentlyPlacingShip(ship) {
   currentShip = ship;
@@ -99,4 +118,7 @@ export {
   getSubmarineOrientation,
   setPatrolboatOrientation,
   getPatrolboatOrientation,
+  increasePlaceCount,
+  getIsAllPlaced,
+  resetPlacement,
 };

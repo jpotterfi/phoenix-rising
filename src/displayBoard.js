@@ -3,6 +3,8 @@ import {
   getCurrentlyPlacingLength,
   getCurrentlyPlacingOrientation,
   getCurrentlyPlacingShip,
+  getIsAllPlaced,
+  increasePlaceCount,
 } from "./currentlyPlacingShip";
 import { gameboardFactory } from "./gameboardFactory";
 import { getDifficulty } from "./gameDifficulty";
@@ -86,6 +88,26 @@ function displayBoard(player, computer) {
               "segmented__" + getCurrentlyPlacingShip()
             );
             deleteShip.remove();
+            increasePlaceCount();
+            if (getIsAllPlaced()) {
+              //if everything is placed
+              console.log("delete harbor");
+              let harbor = document.getElementById("harbor");
+              while (harbor.firstChild) {
+                harbor.removeChild(harbor.firstChild);
+              }
+              const allSet = document.createElement("button");
+              allSet.innerText = "All Set?";
+              allSet.id = "allSet";
+              const replaceShips = document.createElement("button");
+              replaceShips.innerText = "Replace Ships";
+              replaceShips.id = "replaceShips";
+              replaceShips.addEventListener("click", function () {
+                //rebuild harbor
+              });
+              harbor.appendChild(allSet);
+              harbor.appendChild(replaceShips);
+            }
             updatePlayerBoard(player);
           }
         });

@@ -17,6 +17,7 @@ import {
   setPatrolboatOrientation,
   setSubmarineOrientation,
 } from "./currentlyPlacingShip";
+import { buildHarbor } from "./buildHarbor";
 
 let isSettingUp = true;
 
@@ -130,6 +131,8 @@ segmented__patrolboat.addEventListener("dragstart", function () {
 //second parameter is the index (of the value) within the index (of the array)
 
 gameLoop();
+buildHarbor();
+
 // let board = gameboardFactory();
 
 // for (let i = 0; i < 10; i++) {
