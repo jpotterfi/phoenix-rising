@@ -10,7 +10,9 @@ import "./style.css";
 import { randomAttack } from "./computerFns/randomAttack";
 import {
   getCarrierOrientation,
+  getCurrentlyPlacingShip,
   setCarrierOrientation,
+  setCurrentlyPlacingShip,
   setDestroyerOrientation,
   setPatrolboatOrientation,
   setSubmarineOrientation,
@@ -43,6 +45,10 @@ segmented__carrier.addEventListener("dblclick", function () {
     console.log(getCarrierOrientation());
   }
 });
+segmented__carrier.addEventListener("dragstart", function () {
+  setCurrentlyPlacingShip("carrier");
+  console.log(getCurrentlyPlacingShip());
+});
 const segmented__battleship = document.getElementById("segmented__battleship");
 segmented__battleship.style.flexDirection = "row";
 segmented__battleship.addEventListener("dblclick", function () {
@@ -56,6 +62,10 @@ segmented__battleship.addEventListener("dblclick", function () {
     console.log(getCarrierOrientation());
   }
 });
+segmented__battleship.addEventListener("dragstart", function () {
+  setCurrentlyPlacingShip("battleship");
+  console.log(getCurrentlyPlacingShip());
+});
 const segmented__destroyer = document.getElementById("segmented__destroyer");
 segmented__destroyer.style.flexDirection = "row";
 segmented__destroyer.addEventListener("dblclick", function () {
@@ -66,6 +76,10 @@ segmented__destroyer.addEventListener("dblclick", function () {
     segmented__destroyer.style.flexDirection = "row";
     setDestroyerOrientation(0);
   }
+});
+segmented__destroyer.addEventListener("dragstart", function () {
+  setCurrentlyPlacingShip("destroyer");
+  console.log(getCurrentlyPlacingShip());
 });
 const segmented__submarine = document.getElementById("segmented__submarine");
 segmented__submarine.style.flexDirection = "row";
@@ -78,6 +92,10 @@ segmented__submarine.addEventListener("dblclick", function () {
     setSubmarineOrientation(0);
   }
 });
+segmented__submarine.addEventListener("dragstart", function () {
+  setCurrentlyPlacingShip("submarine");
+  console.log(getCurrentlyPlacingShip());
+});
 const segmented__patrolboat = document.getElementById("segmented__patrolboat");
 segmented__patrolboat.style.flexDirection = "row";
 segmented__patrolboat.addEventListener("dblclick", function () {
@@ -88,6 +106,10 @@ segmented__patrolboat.addEventListener("dblclick", function () {
     segmented__patrolboat.style.flexDirection = "row";
     setPatrolboatOrientation(0);
   }
+});
+segmented__patrolboat.addEventListener("dragstart", function () {
+  setCurrentlyPlacingShip("patrolboat");
+  console.log(getCurrentlyPlacingShip());
 });
 // carrier.addEventListener("dblclick", function () {
 //   // carrier.style.transform = "rotate(90deg)";
