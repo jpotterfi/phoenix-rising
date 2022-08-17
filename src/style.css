@@ -107,15 +107,14 @@ body {
 }
 
 #harbor {
-  width: 250px;
-  height: 250px;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: lightblue;
   margin-right: 50px;
+  gap: 10px;
+  padding: 10px;
 }
 
 .segment {
@@ -147,7 +146,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   height: 130px;
   width: 130px;
 }
@@ -175,9 +174,9 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
-  height: 130px;
-  width: 130px;
+  /* border: 2px solid black; */
+  height: 105px;
+  width: 105px;
 }
 
 #segmented__destroyer {
@@ -203,7 +202,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   height: 80px;
   width: 80px;
 }
@@ -231,7 +230,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   height: 80px;
   width: 80px;
 }
@@ -259,7 +258,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   height: 55px;
   width: 55px;
 }
