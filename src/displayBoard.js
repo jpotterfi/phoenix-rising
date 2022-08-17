@@ -37,7 +37,7 @@ function displayBoard(player, computer) {
                 boxRow,
                 boxColumn,
                 getCurrentlyPlacingShip(),
-                getCurrentlyPlacingOrientation(),
+                getCurrentlyPlacingOrientation(getCurrentlyPlacingShip()),
                 player
               )
             ) {
@@ -47,7 +47,7 @@ function displayBoard(player, computer) {
                 boxRow,
                 boxColumn,
                 getCurrentlyPlacingShip(),
-                getCurrentlyPlacingOrientation(),
+                getCurrentlyPlacingOrientation(getCurrentlyPlacingShip()),
                 player
               )
             ) {
@@ -71,7 +71,7 @@ function displayBoard(player, computer) {
               boxRow,
               boxColumn,
               getCurrentlyPlacingShip(),
-              getCurrentlyPlacingOrientation(),
+              getCurrentlyPlacingOrientation(getCurrentlyPlacingShip()),
               player
             )
           ) {
@@ -80,8 +80,12 @@ function displayBoard(player, computer) {
               boxColumn,
               getCurrentlyPlacingLength(),
               getCurrentlyPlacingShip(),
-              getCurrentlyPlacingOrientation()
+              getCurrentlyPlacingOrientation(getCurrentlyPlacingShip())
             );
+            let deleteShip = document.getElementById(
+              "segmented__" + getCurrentlyPlacingShip()
+            );
+            deleteShip.remove();
             updatePlayerBoard(player);
           }
         });

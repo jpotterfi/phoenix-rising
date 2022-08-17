@@ -28,20 +28,28 @@ function getCurrentlyPlacingLength() {
   }
 }
 
-function setCurrentlyPlacingOrientation(num) {
-  let orientation = num;
+function getCurrentlyPlacingOrientation(ship) {
+  if (ship == "carrier") {
+    return carrierOrientation;
+  }
+  if (ship == "battleship") {
+    return battleshipOrientation;
+  }
+  if (ship == "destroyer") {
+    return destroyerOrientation;
+  }
+  if (ship == "submarine") {
+    return submarineOrientation;
+  }
+  if (ship == "patrolboat") {
+    return patrolboatOrientation;
+  }
 }
 
-function getCurrentlyPlacingOrientation() {
-  return orientation;
-}
+function getCarrierOrientation() {}
 
 function setCarrierOrientation(num) {
   carrierOrientation = num;
-}
-
-function getCarrierOrientation() {
-  return carrierOrientation;
 }
 
 function setBattleshipOrientation(num) {
@@ -79,7 +87,6 @@ function getPatrolboatOrientation() {
 export {
   setCurrentlyPlacingShip,
   getCurrentlyPlacingShip,
-  setCurrentlyPlacingOrientation,
   getCurrentlyPlacingOrientation,
   getCurrentlyPlacingLength,
   setCarrierOrientation,
