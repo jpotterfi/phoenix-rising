@@ -1,6 +1,8 @@
 import {
   getCarrierOrientation,
   getCurrentlyPlacingShip,
+  setBattleshipOrientation,
+  getBattleshipOrientation,
   setCarrierOrientation,
   setCurrentlyPlacingShip,
   setDestroyerOrientation,
@@ -82,12 +84,12 @@ function buildHarbor() {
   segmented__battleship.addEventListener("dblclick", function () {
     if (segmented__battleship.style.flexDirection == "row") {
       segmented__battleship.style.flexDirection = "column";
-      setCarrierOrientation(1);
-      console.log(getCarrierOrientation());
+      setBattleshipOrientation(1);
+      console.log(getBattleshipOrientation());
     } else if (segmented__battleship.style.flexDirection == "column") {
       segmented__battleship.style.flexDirection = "row";
-      setCarrierOrientation(0);
-      console.log(getCarrierOrientation());
+      setBattleshipOrientation(0);
+      console.log(getBattleshipOrientation());
     }
   });
   segmented__battleship.addEventListener("dragstart", function () {

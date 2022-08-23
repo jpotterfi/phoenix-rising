@@ -9,6 +9,7 @@ import {
 import { gameboardFactory } from "./gameboardFactory";
 import { getDifficulty } from "./gameDifficulty";
 import { isLegalPlacement } from "./isLegalPlacement";
+import { buildHarbor } from "./buildHarbor";
 
 function displayBoard(player, computer) {
   let isSettingUp = true;
@@ -103,7 +104,11 @@ function displayBoard(player, computer) {
               replaceShips.innerText = "Replace Ships";
               replaceShips.id = "replaceShips";
               replaceShips.addEventListener("click", function () {
-                //rebuild harbor
+                harbor.remove();
+                buildHarbor();
+                player.clearBoard();
+                console.table(player.coordinates);
+                clearPlayerDisplay();
               });
               harbor.appendChild(allSet);
               harbor.appendChild(replaceShips);
@@ -117,8 +122,19 @@ function displayBoard(player, computer) {
       board.appendChild(row);
     }
   }
+  function clearPlayerDisplay() {
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        let clear = document.getElementById("playerbox" + i + "" + j);
+        clear.style.backgroundColor = "white";
+        clear.innerText = "";
+      }
+    }
+  }
+
   function updatePlayerBoard(player) {
     let playerBoard = player;
+    console.table(playerBoard.coordinates);
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
         if (typeof playerBoard.coordinates[i][j] === "object") {
