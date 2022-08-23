@@ -5,17 +5,18 @@ import {
   getCurrentlyPlacingShip,
   getIsAllPlaced,
   increasePlaceCount,
+  resetAll,
 } from "./currentlyPlacingShip";
 import { gameboardFactory } from "./gameboardFactory";
 import { getDifficulty } from "./gameDifficulty";
 import { isLegalPlacement } from "./isLegalPlacement";
 import { buildHarbor } from "./buildHarbor";
+import { gameLoop } from "./gameLoop";
 
-function displayBoard(player, computer) {
+function displayPlayerBoard(player) {
   let isSettingUp = true;
   createPlayerBoard();
   updatePlayerBoard(player);
-  createComputerBoard();
 
   function createPlayerBoard() {
     let board = document.getElementById("boardOne");
@@ -27,6 +28,7 @@ function displayBoard(player, computer) {
         let box = document.createElement("div");
         box.id = "playerbox" + i + "" + j;
         box.className = "box";
+        box.style.backgroundColor = "white";
         //dragging into boxes display
         box.addEventListener("dragover", function (event) {
           event.preventDefault();
@@ -105,10 +107,12 @@ function displayBoard(player, computer) {
               replaceShips.id = "replaceShips";
               replaceShips.addEventListener("click", function () {
                 harbor.remove();
+                while (board.firstChild) {
+                  board.removeChild(board.firstChild);
+                }
                 buildHarbor();
-                player.clearBoard();
-                console.table(player.coordinates);
-                clearPlayerDisplay();
+                resetAll();
+                gameLoop();
               });
               harbor.appendChild(allSet);
               harbor.appendChild(replaceShips);
@@ -201,6 +205,8 @@ function displayBoard(player, computer) {
       }
     }
   }
+}
+function displayComputerBoard(computer) {
   function createComputerBoard() {
     let board = document.getElementById("boardTwo");
     for (let i = 0; i < 10; i++) {
@@ -255,4 +261,4 @@ function displayBoard(player, computer) {
     }
   }
 }
-export { displayBoard };
+export { displayPlayerBoard };

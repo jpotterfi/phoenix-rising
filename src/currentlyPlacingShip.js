@@ -8,6 +8,16 @@ let patrolboatOrientation = 0;
 let placeCount = 0;
 let isAllPlaced = false;
 
+function resetAll() {
+  carrierOrientation = 0;
+  battleshipOrientation = 0;
+  destroyerOrientation = 0;
+  submarineOrientation = 0;
+  patrolboatOrientation = 0;
+  placeCount = 0;
+  isAllPlaced = false;
+}
+
 function increasePlaceCount() {
   placeCount++;
   console.log(placeCount);
@@ -123,4 +133,5 @@ export {
   increasePlaceCount,
   getIsAllPlaced,
   resetPlacement,
+  resetAll,
 };

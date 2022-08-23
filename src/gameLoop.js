@@ -5,7 +5,7 @@ import { placeDestroyer } from "./computerFns/placeDestroyer";
 import { placePatrolboat } from "./computerFns/placePatrolboat";
 import { placeSubmarine } from "./computerFns/placeSubmarine";
 import { randomAttack } from "./computerFns/randomAttack";
-import { displayBoard } from "./displayBoard";
+import { displayPlayerBoard } from "./displayBoard";
 import { gameboardFactory } from "./gameboardFactory";
 import { player } from "./player";
 
@@ -22,8 +22,6 @@ function gameLoop() {
   //   randomAttack(playerBoard);
   // }
 
-  displayBoard(playerBoard, computerBoard);
-  console.table(playerBoard.coordinates);
-  console.table(computerBoard.coordinates);
+  displayPlayerBoard(playerBoard);
 }
 export { gameLoop };
