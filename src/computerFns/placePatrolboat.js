@@ -148,7 +148,7 @@ function placePatrolboat(board) {
       }
     }
   }
-  console.log(row, column, orientation, "patrolboat");
+
   board.placeShip(row, column, length, "patrolboat", orientation);
 }
 export { placePatrolboat };

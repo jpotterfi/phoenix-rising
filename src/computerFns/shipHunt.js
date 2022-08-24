@@ -1,6 +1,7 @@
 import { randomAttack } from "./randomAttack";
 
 let isOrienting = false;
+let initialCheck = false;
 
 // let foundCoordinate = {
 //   row: 0,
@@ -47,93 +48,127 @@ let foundCoordinate;
 
 function shipHunt(board) {
   if (!isOrienting) {
+    console.log("randomly attacking to get initial hit");
     let row = Math.floor(Math.random() * 10);
     let column = Math.floor(Math.random() * 10);
     // console.table(board.coordinates);
     // console.log(row, column);
     // console.log(typeof board.coordinates[row][column]);
     if (typeof board.coordinates[row][column] === "object") {
-      foundTarget = true;
       foundCoordinate = foundCoordinateFactory(row, column);
 
       isOrienting = true;
       console.log("shipHunt found an object");
       console.log("shipHunt recorded object coordinate at ");
       console.table(foundCoordinate);
-      board.receiveAttack(row, column);
+
+      if (isLegal(row, column)) {
+        board.receiveAttack(row, column);
+      } else {
+        shipHunt(board);
+      }
+
+      function isLegal(row, column) {
+        let isLegal = true;
+        if (board.coordinates[row][column] == "miss") {
+          isLegal = false;
+        } else if (typeof board.coordinates[row][column] === "object") {
+          if (
+            board.coordinates[row][column].shipLocation[
+              JSON.stringify([row, column])
+            ] == true
+          ) {
+            isLegal = false;
+          }
+        }
+        console.log("legal move at ", row, column);
+        return isLegal;
+      }
     } else {
-      randomAttack(board);
+      board.receiveAttack(row, column);
+      console.log("shipHunt attacked an empty spot at");
+      console.log(row, column);
+      console.log(typeof board.coordinates[row][column]);
     }
   } else if (isOrienting) {
+    console.log("have initial hit; searching more closely");
     //off the bat check to see what directions we can eliminate (added benefit of checking subsequent misses)
     //row checks
-    if (foundCoordinate.row == 0) {
-      foundCoordinate.isUp = false;
-      if (
-        board.coordinates[foundCoordinate.row + 1][foundCoordinate.column] ==
-        "miss"
-      ) {
-        foundCoordinate.isDown = false;
-      }
-    }
-    if (foundCoordinate.row == 9) {
-      foundCoordinate.isDown = false;
-      if (
-        board.coordinates[foundCoordinate.row - 1][foundCoordinate.column] ==
-        "miss"
-      ) {
+    if (!initialCheck) {
+      if (foundCoordinate.row == 0) {
         foundCoordinate.isUp = false;
+        if (
+          board.coordinates[foundCoordinate.row + 1][foundCoordinate.column] ==
+          "miss"
+        ) {
+          console.log("foundCoordinate.isDown marked false");
+          foundCoordinate.isDown = false;
+        }
       }
-    }
-    if (foundCoordinate.row > 0 && foundCoordinate.row < 9) {
-      if (
-        board.coordinates[foundCoordinate.row + 1][foundCoordinate.column] ==
-        "miss"
-      ) {
-        foundCoordinate.isUp = false;
-      }
-      if (
-        board.coordinates[foundCoordinate.row - 1][foundCoordinate.column] ==
-        "miss"
-      ) {
+      if (foundCoordinate.row == 9) {
+        console.log("foundCoordinate.isDown marked false");
         foundCoordinate.isDown = false;
+        if (
+          board.coordinates[foundCoordinate.row - 1][foundCoordinate.column] ==
+          "miss"
+        ) {
+          foundCoordinate.isUp = false;
+        }
       }
-    }
-    //column checks
-    if (foundCoordinate.column == 0) {
-      foundCoordinate.isLeft = false;
-      if (
-        board.coordinates[foundCoordinate.row][foundCoordinate.column + 1] ==
-        "miss"
-      ) {
-        foundCoordinate.isRight = false;
+      if (foundCoordinate.row > 0 && foundCoordinate.row < 9) {
+        if (
+          board.coordinates[foundCoordinate.row + 1][foundCoordinate.column] ==
+          "miss"
+        ) {
+          foundCoordinate.isUp = false;
+        }
+        if (
+          board.coordinates[foundCoordinate.row - 1][foundCoordinate.column] ==
+          "miss"
+        ) {
+          console.log("foundCoordinate.isDown marked false");
+          foundCoordinate.isDown = false;
+        }
       }
-    }
-    if (foundCoordinate.column == 9) {
-      foundCoordinate.isRight = false;
-      if (
-        board.coordinates[foundCoordinate.row][foundCoordinate.column - 1] ==
-        "miss"
-      ) {
+      //column checks
+      if (foundCoordinate.column == 0) {
         foundCoordinate.isLeft = false;
+        if (
+          board.coordinates[foundCoordinate.row][foundCoordinate.column + 1] ==
+          "miss"
+        ) {
+          foundCoordinate.isRight = false;
+        }
       }
-    }
-    if (foundCoordinate.column > 0 && foundCoordinate.column < 9) {
-      if (
-        board.coordinates[foundCoordinate.row][foundCoordinate.column - 1] ==
-        "miss"
-      ) {
-        foundCoordinate.isLeft = false;
-      }
-      if (
-        board.coordinates[foundCoordinate.row][foundCoordinate.column + 1] ==
-        "miss"
-      ) {
+      if (foundCoordinate.column == 9) {
         foundCoordinate.isRight = false;
+        if (
+          board.coordinates[foundCoordinate.row][foundCoordinate.column - 1] ==
+          "miss"
+        ) {
+          foundCoordinate.isLeft = false;
+        }
+      }
+      if (foundCoordinate.column > 0 && foundCoordinate.column < 9) {
+        if (
+          board.coordinates[foundCoordinate.row][foundCoordinate.column - 1] ==
+          "miss"
+        ) {
+          foundCoordinate.isLeft = false;
+        }
+        if (
+          board.coordinates[foundCoordinate.row][foundCoordinate.column + 1] ==
+          "miss"
+        ) {
+          foundCoordinate.isRight = false;
+        }
       }
     }
+    initialCheck = true;
     //finished initial checks
+    console.table(foundCoordinate);
     if (foundCoordinate.isUp == true) {
+      console.log("entered isUp == true logic");
       foundCoordinate.nextRow--;
       board.receiveAttack(foundCoordinate.nextRow, foundCoordinate.column);
       if (
@@ -156,8 +191,10 @@ function shipHunt(board) {
       ) {
         foundCoordinate.isUp = false;
         foundCoordinate.nextRow = foundCoordinate.row;
+        console.table(foundCoordinate);
       }
     } else if (foundCoordinate.isDown == true) {
+      console.log("entered isDown == true logic");
       foundCoordinate.nextRow++;
       board.receiveAttack(foundCoordinate.nextRow, foundCoordinate.column);
       if (
@@ -178,10 +215,12 @@ function shipHunt(board) {
           foundCoordinate.column
         ] !== "object"
       ) {
+        console.log("foundCoordinate.isDown marked false");
         foundCoordinate.isDown = false;
         foundCoordinate.nextRow = foundCoordinate.row;
       }
     } else if (foundCoordinate.isRight == true) {
+      console.log("entered isRight == true logic");
       foundCoordinate.nextColumn++;
       board.receiveAttack(foundCoordinate.row, foundCoordinate.nextColumn);
       if (
@@ -198,12 +237,15 @@ function shipHunt(board) {
         }
       }
       if (
-        typeof board.coordinates[foundCoordinate.row][nextColumn] !== "object"
+        typeof board.coordinates[foundCoordinate.row][
+          foundCoordinate.nextColumn
+        ] !== "object"
       ) {
         foundCoordinate.isRight = false;
         foundCoordinate.nextColumn = foundCoordinate.column;
       }
     } else if (foundCoordinate.isLeft == true) {
+      console.log("entered isLeft == true logic");
       foundCoordinate.nextColumn--;
       board.receiveAttack(foundCoordinate.row, foundCoordinate.nextColumn);
       if (
@@ -233,6 +275,7 @@ function shipHunt(board) {
 
 function resetHunt() {
   isOrienting = false;
+  initialCheck = false;
 }
 
 // function populateCoordinates(row, column) {

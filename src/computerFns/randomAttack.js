@@ -6,10 +6,8 @@ function randomAttack(board) {
   let column = Math.floor(Math.random() * 10);
 
   if (isLegal(row, column)) {
-    console.log(row, column, "legal attack");
     board.receiveAttack(row, column);
   } else {
-    console.log(row, column, "not legal attack");
     randomAttack(board);
   }
 

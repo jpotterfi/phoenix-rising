@@ -20,7 +20,6 @@ function resetAll() {
 
 function increasePlaceCount() {
   placeCount++;
-  console.log(placeCount);
 }
 
 function getIsAllPlaced() {

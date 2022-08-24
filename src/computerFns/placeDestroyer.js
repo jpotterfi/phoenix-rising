@@ -147,7 +147,7 @@ function placeDestroyer(board) {
       }
     }
   }
-  console.log(row, column, orientation, "destroyer");
+
   board.placeShip(row, column, length, "destroyer", orientation);
 }
 export { placeDestroyer };

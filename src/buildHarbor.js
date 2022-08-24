@@ -55,7 +55,6 @@ function buildHarbor() {
 
   draggables.forEach((draggable) => {
     draggable.addEventListener("dragstart", () => {
-      console.log("drag start");
       draggable.classList.add("dragging");
     });
     draggable.addEventListener("dragend", () => {
@@ -69,32 +68,26 @@ function buildHarbor() {
     if (segmented__carrier.style.flexDirection == "row") {
       segmented__carrier.style.flexDirection = "column";
       setCarrierOrientation(1);
-      console.log(getCarrierOrientation());
     } else if (segmented__carrier.style.flexDirection == "column") {
       segmented__carrier.style.flexDirection = "row";
       setCarrierOrientation(0);
-      console.log(getCarrierOrientation());
     }
   });
   segmented__carrier.addEventListener("dragstart", function () {
     setCurrentlyPlacingShip("carrier");
-    console.log(getCurrentlyPlacingShip());
   });
   segmented__battleship.style.flexDirection = "row";
   segmented__battleship.addEventListener("dblclick", function () {
     if (segmented__battleship.style.flexDirection == "row") {
       segmented__battleship.style.flexDirection = "column";
       setBattleshipOrientation(1);
-      console.log(getBattleshipOrientation());
     } else if (segmented__battleship.style.flexDirection == "column") {
       segmented__battleship.style.flexDirection = "row";
       setBattleshipOrientation(0);
-      console.log(getBattleshipOrientation());
     }
   });
   segmented__battleship.addEventListener("dragstart", function () {
     setCurrentlyPlacingShip("battleship");
-    console.log(getCurrentlyPlacingShip());
   });
 
   segmented__destroyer.style.flexDirection = "row";
@@ -109,7 +102,6 @@ function buildHarbor() {
   });
   segmented__destroyer.addEventListener("dragstart", function () {
     setCurrentlyPlacingShip("destroyer");
-    console.log(getCurrentlyPlacingShip());
   });
 
   segmented__submarine.style.flexDirection = "row";
@@ -124,7 +116,6 @@ function buildHarbor() {
   });
   segmented__submarine.addEventListener("dragstart", function () {
     setCurrentlyPlacingShip("submarine");
-    console.log(getCurrentlyPlacingShip());
   });
 
   segmented__patrolboat.style.flexDirection = "row";
@@ -139,7 +130,6 @@ function buildHarbor() {
   });
   segmented__patrolboat.addEventListener("dragstart", function () {
     setCurrentlyPlacingShip("patrolboat");
-    console.log(getCurrentlyPlacingShip());
   });
   //event listeners
 

@@ -148,7 +148,7 @@ function placeCarrier(board) {
       }
     }
   }
-  console.log(row, column, orientation, "carrier");
+
   board.placeShip(row, column, length, "carrier", orientation);
 }
 export { placeCarrier };
