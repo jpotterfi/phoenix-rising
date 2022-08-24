@@ -8,10 +8,11 @@ import {
   resetAll,
 } from "./currentlyPlacingShip";
 import { gameboardFactory } from "./gameboardFactory";
-import { getDifficulty } from "./gameDifficulty";
+import { getDifficulty, setDifficulty } from "./gameDifficulty";
 import { isLegalPlacement } from "./isLegalPlacement";
 import { buildHarbor } from "./buildHarbor";
 import { gameLoop } from "./gameLoop";
+import { shipHunt } from "./computerFns/shipHunt";
 
 function displayBoard(player, computer) {
   let isSettingUp = true;
@@ -111,6 +112,7 @@ function displayBoard(player, computer) {
               admiral.id = "admiral";
               admiral.addEventListener("click", function () {
                 harbor.remove();
+                setDifficulty("hard");
                 createComputerBoard();
               });
               const replaceShips = document.createElement("button");
@@ -231,6 +233,11 @@ function displayBoard(player, computer) {
             if (getDifficulty() == "easy") {
               if (player.isOver() != true) {
                 randomAttack(player);
+                updatePlayerBoard(player);
+              }
+            } else if (getDifficulty() == "hard") {
+              if (player.isOver() != true) {
+                shipHunt(player);
                 updatePlayerBoard(player);
               }
             }
