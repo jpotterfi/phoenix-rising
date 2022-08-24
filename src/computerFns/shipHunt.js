@@ -51,44 +51,40 @@ function shipHunt(board) {
     console.log("randomly attacking to get initial hit");
     let row = Math.floor(Math.random() * 10);
     let column = Math.floor(Math.random() * 10);
-    // console.table(board.coordinates);
-    // console.log(row, column);
-    // console.log(typeof board.coordinates[row][column]);
-    if (typeof board.coordinates[row][column] === "object") {
-      foundCoordinate = foundCoordinateFactory(row, column);
+    function isLegal(row, column) {
+      let isLegal = true;
+      if (board.coordinates[row][column] == "miss") {
+        isLegal = false;
+      } else if (typeof board.coordinates[row][column] === "object") {
+        if (
+          board.coordinates[row][column].shipLocation[
+            JSON.stringify([row, column])
+          ] == true
+        ) {
+          isLegal = false;
+        }
+      }
+      return isLegal;
+    }
 
-      isOrienting = true;
-      console.log("shipHunt found an object");
-      console.log("shipHunt recorded object coordinate at ");
-      console.table(foundCoordinate);
-
-      if (isLegal(row, column)) {
+    if (!isLegal(row, column)) {
+      //if the move isn't legal, get new coordinates
+      shipHunt(board);
+    }
+    if (isLegal(row, column)) {
+      if (typeof board.coordinates[row][column] === "object") {
+        foundCoordinate = foundCoordinateFactory(row, column);
+        isOrienting = true;
+        console.log("shipHunt found an object");
+        console.log("shipHunt recorded object coordinate at ");
+        console.table(foundCoordinate);
         board.receiveAttack(row, column);
       } else {
-        shipHunt(board);
+        board.receiveAttack(row, column);
+        console.log("shipHunt attacked an empty spot at");
+        console.log(row, column);
+        console.log(typeof board.coordinates[row][column]);
       }
-
-      function isLegal(row, column) {
-        let isLegal = true;
-        if (board.coordinates[row][column] == "miss") {
-          isLegal = false;
-        } else if (typeof board.coordinates[row][column] === "object") {
-          if (
-            board.coordinates[row][column].shipLocation[
-              JSON.stringify([row, column])
-            ] == true
-          ) {
-            isLegal = false;
-          }
-        }
-        console.log("legal move at ", row, column);
-        return isLegal;
-      }
-    } else {
-      board.receiveAttack(row, column);
-      console.log("shipHunt attacked an empty spot at");
-      console.log(row, column);
-      console.log(typeof board.coordinates[row][column]);
     }
   } else if (isOrienting) {
     console.log("have initial hit; searching more closely");
@@ -263,7 +259,7 @@ function shipHunt(board) {
       }
       if (
         typeof board.coordinates[foundCoordinate.row][
-          foundCoordinate.nextColumn--
+          foundCoordinate.nextColumn
         ] !== "object"
       ) {
         foundCoordinate.isLeft = false;
