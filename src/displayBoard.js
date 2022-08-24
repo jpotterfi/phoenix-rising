@@ -95,7 +95,7 @@ function displayBoard(player, computer) {
             increasePlaceCount();
             if (getIsAllPlaced()) {
               //if everything is placed
-              console.log("delete harbor");
+
               let harbor = document.getElementById("harbor");
               while (harbor.firstChild) {
                 harbor.removeChild(harbor.firstChild);

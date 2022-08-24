@@ -6,9 +6,10 @@
 
 body {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 50px;
   background-color: lightblue;
+  justify-content: center;
 }
 
 #boardOne {
@@ -118,7 +119,8 @@ body {
   justify-content: center;
   align-items: center;
   background-color: lightblue;
-
+  border: black 10px solid;
+  border-radius: 32px;
   gap: 10px;
   padding: 10px;
 }
@@ -267,4 +269,8 @@ body {
   /* border: 2px solid black; */
   height: 55px;
   width: 55px;
+}
+
+.left {
+  max-width: 300px;
 }
