@@ -13,10 +13,7 @@ import { isLegalPlacement } from "./isLegalPlacement";
 import { buildHarbor } from "./buildHarbor";
 import { gameLoop } from "./gameLoop";
 import { shipHunt } from "./computerFns/shipHunt";
-
-let buttonBox = document.getElementById("buttonBox");
-let buttonBoxTop = document.getElementById("buttonBoxTop");
-let buttonBoxBottom = document.getElementById("buttonBoxBottom");
+import { buildButtonBox } from "./buildButtonBox";
 
 function displayBoard(player, computer) {
   let isSettingUp = true;
@@ -98,18 +95,19 @@ function displayBoard(player, computer) {
             deleteShip.remove();
             increasePlaceCount();
             if (getIsAllPlaced()) {
-              //if everything is placed
+              buildButtonBox();
+
+              console.log("all placed");
 
               let harbor = document.getElementById("harbor");
               harbor.remove();
-              // while (harbor.firstChild) {
-              //   harbor.removeChild(harbor.firstChild);
-              // }
+
               const commander = document.createElement("button");
               commander.innerHTML =
                 "Commander <br /><br /> (A.I will fire randomly)";
               commander.id = "commander";
               commander.addEventListener("click", function () {
+                let buttonBox = document.getElementById("buttonBox");
                 harbor.remove();
                 buttonBox.remove();
                 createComputerBoard();
@@ -119,8 +117,12 @@ function displayBoard(player, computer) {
                 "Fleet Admiral <br /><br /> (A.I will hunt ships on hit)";
               admiral.id = "admiral";
               admiral.addEventListener("click", function () {
+                let buttonBox = document.getElementById("buttonBox");
                 harbor.remove();
                 buttonBox.remove();
+                // while (buttonBox.firstChild) {
+                //   buttonBox.removeChild(buttonBox.firstChild);
+                // }
                 setDifficulty("hard");
                 createComputerBoard();
               });
@@ -128,15 +130,25 @@ function displayBoard(player, computer) {
               replaceShips.innerText = "I wish to reassign my ships!";
               replaceShips.id = "replaceShips";
               replaceShips.addEventListener("click", function () {
+                let buttonBox = document.getElementById("buttonBox");
                 harbor.remove();
                 buttonBox.remove();
-                while (board.firstChild) {
-                  board.removeChild(board.firstChild);
+                let boardOne = document.getElementById("boardOne");
+                while (boardOne.firstChild) {
+                  boardOne.removeChild(boardOne.firstChild);
                 }
                 buildHarbor();
                 resetAll();
                 gameLoop();
               });
+              let buttonBoxTop = document.getElementById("buttonBoxTop");
+              while (buttonBoxTop.firstChild) {
+                buttonBoxTop.removeChild(buttonBoxTop.firstChild);
+              }
+              let buttonBoxBottom = document.getElementById("buttonBoxBottom");
+              while (buttonBoxBottom.firstChild) {
+                buttonBoxBottom.removeChild(buttonBoxBottom.firstChild);
+              }
               buttonBoxTop.appendChild(commander);
               buttonBoxTop.appendChild(admiral);
               buttonBoxBottom.appendChild(replaceShips);

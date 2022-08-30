@@ -7,6 +7,20 @@ function randomAttack(board) {
 
   if (isLegal(row, column)) {
     board.receiveAttack(row, column);
+    if (typeof board.coordinates[row][column] === "object") {
+      if (board.coordinates[row][column].isSunk() == true) {
+        console.table(board.coordinates);
+        let locationArray = JSON.parse(
+          JSON.stringify(board.coordinates[row][column].shipLocation)
+        );
+        console.table(locationArray);
+        // for (const property in shipLocation) {
+        //   if (JSON.stringify(coordArray) == property) {
+        //     shipLocation[property] = true;
+        //   }
+        // }
+      }
+    }
   } else {
     randomAttack(board);
   }
