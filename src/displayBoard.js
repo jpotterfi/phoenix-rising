@@ -14,6 +14,7 @@ import { buildHarbor } from "./buildHarbor";
 import { gameLoop } from "./gameLoop";
 import { shipHunt } from "./computerFns/shipHunt";
 import { buildButtonBox } from "./buildButtonBox";
+import { solveMisses } from "./solveMisses";
 
 function displayBoard(player, computer) {
   let isSettingUp = true;
@@ -172,7 +173,7 @@ function displayBoard(player, computer) {
           if (playerBoard.coordinates[i][j].name == "destroyer") {
             let destroyer = document.getElementById("playerbox" + i + "" + j);
             destroyer.style.backgroundColor = "blue";
-            destroyer.innerText = "d";
+
             if (
               playerBoard.coordinates[i][j].shipLocation[
                 JSON.stringify([i, j])
@@ -183,7 +184,7 @@ function displayBoard(player, computer) {
           } else if (playerBoard.coordinates[i][j].name == "submarine") {
             let submarine = document.getElementById("playerbox" + i + "" + j);
             submarine.style.backgroundColor = "green";
-            submarine.innerText = "s";
+
             if (
               playerBoard.coordinates[i][j].shipLocation[
                 JSON.stringify([i, j])
@@ -194,7 +195,7 @@ function displayBoard(player, computer) {
           } else if (playerBoard.coordinates[i][j].name == "carrier") {
             let carrier = document.getElementById("playerbox" + i + "" + j);
             carrier.style.backgroundColor = "grey";
-            carrier.innerText = "c";
+
             if (
               playerBoard.coordinates[i][j].shipLocation[
                 JSON.stringify([i, j])
@@ -205,7 +206,7 @@ function displayBoard(player, computer) {
           } else if (playerBoard.coordinates[i][j].name == "battleship") {
             let battleship = document.getElementById("playerbox" + i + "" + j);
             battleship.style.backgroundColor = "orange";
-            battleship.innerText = "b";
+
             if (
               playerBoard.coordinates[i][j].shipLocation[
                 JSON.stringify([i, j])
@@ -216,7 +217,7 @@ function displayBoard(player, computer) {
           } else if (playerBoard.coordinates[i][j].name == "patrolboat") {
             let patrolboat = document.getElementById("playerbox" + i + "" + j);
             patrolboat.style.backgroundColor = "purple";
-            patrolboat.innerText = "p";
+
             if (
               playerBoard.coordinates[i][j].shipLocation[
                 JSON.stringify([i, j])
@@ -227,7 +228,7 @@ function displayBoard(player, computer) {
           }
         } else if (playerBoard.coordinates[i][j] == "miss") {
           let miss = document.getElementById("playerbox" + i + "" + j);
-          miss.innerText = "x";
+          miss.style.backgroundColor = "#ADD8E6";
         }
       }
     }
@@ -251,6 +252,11 @@ function displayBoard(player, computer) {
           //turn id into coordinates
           if (computer.isOver() != true) {
             computer.receiveAttack(arrRow, arrColumn);
+            if (typeof computer.coordinates[arrRow][arrColumn] === "object") {
+              if (computer.coordinates[arrRow][arrColumn].isSunk()) {
+                solveMisses(computer, arrRow, arrColumn);
+              }
+            }
             updateComputerBoard(computer);
             if (getDifficulty() == "easy") {
               if (player.isOver() != true) {
