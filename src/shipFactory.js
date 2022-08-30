@@ -28,6 +28,6 @@ function shipFactory(length, name, orientation, row, column) {
     }
     return sunk;
   }
-  return { length, shipLocation, hit, isSunk, name };
+  return { length, shipLocation, hit, isSunk, name, orientation };
 }
 export { shipFactory };

@@ -1,3 +1,4 @@
+import { solveMisses } from "../solveMisses";
 import { randomAttack } from "./randomAttack";
 
 let isOrienting = false;
@@ -177,6 +178,7 @@ function shipHunt(board) {
             foundCoordinate.column
           ].isSunk()
         ) {
+          solveMisses(board, foundCoordinate.nextRow, foundCoordinate.column);
           resetHunt();
         }
       }
@@ -203,6 +205,7 @@ function shipHunt(board) {
             foundCoordinate.column
           ].isSunk()
         ) {
+          solveMisses(board, foundCoordinate.nextRow, foundCoordinate.column);
           resetHunt();
         }
       }
@@ -229,6 +232,7 @@ function shipHunt(board) {
             foundCoordinate.nextColumn
           ].isSunk()
         ) {
+          solveMisses(board, foundCoordinate.row, foundCoordinate.nextColumn);
           resetHunt();
         }
       }
@@ -254,6 +258,7 @@ function shipHunt(board) {
             foundCoordinate.nextColumn
           ].isSunk()
         ) {
+          solveMisses(board, foundCoordinate.row, foundCoordinate.nextColumn);
           resetHunt();
         }
       }
