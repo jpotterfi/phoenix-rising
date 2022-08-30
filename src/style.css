@@ -44,6 +44,13 @@ h3 {
 .row {
   display: flex;
   flex-direction: row;
+  margin-top: -1px;
+  margin-left: -1px;
+}
+.row .box {
+  outline: 2px solid; /* use instead of border */
+  margin-top: 1px;
+  margin-left: 1px;
 }
 
 .box {
@@ -156,8 +163,8 @@ h3 {
 #segmented__carrier {
   display: flex;
   flex-direction: row;
-  margin-top: -1px;
-  margin-left: -1px;
+  /* margin-top: -1px;
+  margin-left: -1px; */
 }
 
 #segmented__carrier:hover {
