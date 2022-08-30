@@ -6,10 +6,33 @@
 
 body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 50px;
   background-color: lightblue;
   justify-content: center;
+  align-items: center;
+  font-family: "Roboto";
+}
+
+.text {
+  max-width: 500px;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 900;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h3 {
+  margin: 0;
+  font-weight: 400;
 }
 
 #boardOne {
@@ -31,7 +54,6 @@ body {
 
 #content {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 50px;
@@ -271,6 +293,102 @@ body {
   width: 55px;
 }
 
-.left {
-  max-width: 300px;
+#commander,
+#admiral {
+  align-self: center;
+  border: none;
+  padding: 1rem 1rem;
+  margin: 0;
+  text-decoration: none;
+  background: white;
+  color: #0c090a;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+#commander:hover,
+#commander:focus {
+  background: #daf7a6;
+  transform: scale(1.05);
+}
+
+#commander:focus {
+  outline: 1px solid rgb(0, 0, 0);
+  outline-offset: -4px;
+}
+
+#commander:active {
+  transform: scale(0.95);
+}
+
+#admiral:hover,
+#admiral:focus {
+  background: #ffcccb;
+  transform: scale(1.05);
+}
+
+#admiral:focus {
+  outline: 1px solid rgb(0, 0, 0);
+  outline-offset: -4px;
+}
+
+#admiral:active {
+  transform: scale(0.95);
+}
+
+#replaceShips:hover,
+#replaceShips:focus {
+  background: white;
+  transform: scale(1.05);
+}
+
+#replaceShips:focus {
+  outline: 1px solid rgb(0, 0, 0);
+  outline-offset: -4px;
+}
+
+#replaceShips:active {
+  transform: scale(0.95);
+}
+
+#buttonBox {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+#buttonBoxTop {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+#buttonBoxBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#replaceShips {
+  align-self: center;
+  border: none;
+  padding: 1rem 1rem;
+  margin: 0;
+  text-decoration: none;
+  background: white;
+  color: #0c090a;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
