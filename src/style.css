@@ -22,17 +22,21 @@ h1 {
   font-size: 3rem;
   text-align: center;
   font-weight: 900;
+  text-decoration: underline;
 }
 
 h2 {
   margin: 0;
   font-size: 2rem;
   font-weight: 700;
+  text-align: center;
+  margin-inline: 2rem;
 }
 
 h3 {
   margin: 0;
   font-weight: 400;
+  margin-inline: 3rem;
 }
 
 #boardOne {
