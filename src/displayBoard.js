@@ -15,6 +15,12 @@ import { gameLoop } from "./gameLoop";
 import { shipHunt } from "./computerFns/shipHunt";
 import { buildButtonBox } from "./buildButtonBox";
 import { solveMisses } from "./solveMisses";
+import { isLegalMove } from "./isLegalMove";
+
+import Icon from "./icons/target.svg";
+
+const target = new Image();
+target.src = Icon;
 
 function displayBoard(player, computer) {
   let isSettingUp = true;
@@ -250,7 +256,10 @@ function displayBoard(player, computer) {
           let arrRow = arr[0];
           let arrColumn = arr[1];
           //turn id into coordinates
-          if (computer.isOver() != true) {
+          if (
+            computer.isOver() != true &&
+            isLegalMove(computer, arrRow, arrColumn)
+          ) {
             computer.receiveAttack(arrRow, arrColumn);
             if (typeof computer.coordinates[arrRow][arrColumn] === "object") {
               if (computer.coordinates[arrRow][arrColumn].isSunk()) {
@@ -271,6 +280,24 @@ function displayBoard(player, computer) {
               }
             }
           }
+        });
+        box.addEventListener("mouseover", function () {
+          let arr = JSON.parse(box.id);
+          let arrRow = arr[0];
+          let arrColumn = arr[1];
+          if (
+            computer.isOver() != true &&
+            isLegalMove(computer, arrRow, arrColumn)
+          ) {
+            box.style.backgroundImage = "url(" + target.src + ")";
+            console.log("mousing over");
+          }
+        });
+        box.addEventListener("mouseout", function () {
+          box.style.backgroundImage = "none";
+        });
+        box.addEventListener("click", function () {
+          box.style.backgroundImage = "none";
         });
         row.appendChild(box);
       }
