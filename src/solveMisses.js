@@ -42,7 +42,7 @@ function solveMisses(board, foundRow, foundColumn) {
     if (locationOrientation == 1) {
       if (c == 0) {
         board.coordinates[r][c + 1] = "miss";
-      } else if (c > 1 && c < 9) {
+      } else if (c > 0 && c < 9) {
         board.coordinates[r][c + 1] = "miss";
         board.coordinates[r][c - 1] = "miss";
       } else if (c == 9) {
@@ -51,20 +51,21 @@ function solveMisses(board, foundRow, foundColumn) {
       if (r == 0) {
         if (typeof board.coordinates[r + 1][c] !== "object") {
           board.coordinates[r + 1][c] = "miss";
-        } else if (r > 0 && r < 9) {
-          if (typeof board.coordinates[r + 1][c] !== "object") {
-            board.coordinates[r + 1][c] = "miss";
-          }
-          if (typeof board.coordinates[r - 1][c] !== "object") {
-            board.coordinates[r - 1][c] = "miss";
-          }
-        } else if (r == 9) {
-          if (typeof board.coordinates[r - 1][c] !== "object") {
-            board.coordinates[r - 1][c] = "miss";
-          }
+        }
+      } else if (r > 0 && r < 9) {
+        if (typeof board.coordinates[r + 1][c] !== "object") {
+          board.coordinates[r + 1][c] = "miss";
+        }
+        if (typeof board.coordinates[r - 1][c] !== "object") {
+          board.coordinates[r - 1][c] = "miss";
+        }
+      } else if (r == 9) {
+        if (typeof board.coordinates[r - 1][c] !== "object") {
+          board.coordinates[r - 1][c] = "miss";
         }
       }
     }
   }
 }
+
 export { solveMisses };

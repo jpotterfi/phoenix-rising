@@ -172,7 +172,7 @@ function displayBoard(player, computer) {
         if (typeof playerBoard.coordinates[i][j] === "object") {
           if (playerBoard.coordinates[i][j].name == "destroyer") {
             let destroyer = document.getElementById("playerbox" + i + "" + j);
-            destroyer.style.backgroundColor = "blue";
+            destroyer.style.backgroundColor = "#1d3557";
 
             if (
               playerBoard.coordinates[i][j].shipLocation[
@@ -183,7 +183,7 @@ function displayBoard(player, computer) {
             }
           } else if (playerBoard.coordinates[i][j].name == "submarine") {
             let submarine = document.getElementById("playerbox" + i + "" + j);
-            submarine.style.backgroundColor = "green";
+            submarine.style.backgroundColor = "#8338ec";
 
             if (
               playerBoard.coordinates[i][j].shipLocation[
@@ -194,7 +194,7 @@ function displayBoard(player, computer) {
             }
           } else if (playerBoard.coordinates[i][j].name == "carrier") {
             let carrier = document.getElementById("playerbox" + i + "" + j);
-            carrier.style.backgroundColor = "grey";
+            carrier.style.backgroundColor = "#ffbe0b";
 
             if (
               playerBoard.coordinates[i][j].shipLocation[
@@ -205,7 +205,7 @@ function displayBoard(player, computer) {
             }
           } else if (playerBoard.coordinates[i][j].name == "battleship") {
             let battleship = document.getElementById("playerbox" + i + "" + j);
-            battleship.style.backgroundColor = "orange";
+            battleship.style.backgroundColor = "#bc6c25";
 
             if (
               playerBoard.coordinates[i][j].shipLocation[
@@ -216,7 +216,7 @@ function displayBoard(player, computer) {
             }
           } else if (playerBoard.coordinates[i][j].name == "patrolboat") {
             let patrolboat = document.getElementById("playerbox" + i + "" + j);
-            patrolboat.style.backgroundColor = "purple";
+            patrolboat.style.backgroundColor = "#8ac926";
 
             if (
               playerBoard.coordinates[i][j].shipLocation[
@@ -254,6 +254,7 @@ function displayBoard(player, computer) {
             computer.receiveAttack(arrRow, arrColumn);
             if (typeof computer.coordinates[arrRow][arrColumn] === "object") {
               if (computer.coordinates[arrRow][arrColumn].isSunk()) {
+                console.log("is sunk!");
                 solveMisses(computer, arrRow, arrColumn);
               }
             }

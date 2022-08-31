@@ -94,36 +94,36 @@ h3 {
 #place_carrier {
   width: 125px;
   height: 25px;
-  background-color: grey;
-  border: 1px solid black;
+  background-color: #ffbe0b;
+
   cursor: move;
 }
 #place_battleship {
   width: 100px;
   height: 25px;
-  background-color: purple;
-  border: 1px solid black;
+  background-color: #fb5607;
+
   cursor: move;
 }
 #place_destroyer {
   width: 75px;
   height: 25px;
   background-color: pink;
-  border: 1px solid black;
+
   cursor: move;
 }
 #place_submarine {
   width: 75px;
   height: 25px;
   background-color: orangered;
-  border: 1px solid black;
+
   cursor: move;
 }
 #place_patrolboat {
   width: 50px;
   height: 25px;
-  background-color: green;
-  border: 1px solid black;
+  background-color: #ff006e;
+
   cursor: move;
 }
 
@@ -179,7 +179,7 @@ h3 {
   outline: 1px solid; /* use instead of border */
   margin-top: 1px;
   margin-left: 1px;
-  background-color: silver;
+  background-color: #ffbe0b;
 }
 
 #boatBox__carrier {
@@ -207,7 +207,7 @@ h3 {
   outline: 1px solid; /* use instead of border */
   margin-top: 1px;
   margin-left: 1px;
-  background-color: purple;
+  background-color: #bc6c25;
 }
 
 #boatBox__battleship {
@@ -235,7 +235,7 @@ h3 {
   outline: 1px solid; /* use instead of border */
   margin-top: 1px;
   margin-left: 1px;
-  background-color: orangered;
+  background-color: #1d3557;
 }
 
 #boatBox__destroyer {
@@ -263,7 +263,7 @@ h3 {
   outline: 1px solid; /* use instead of border */
   margin-top: 1px;
   margin-left: 1px;
-  background-color: green;
+  background-color: #8338ec;
 }
 
 #boatBox__submarine {
@@ -291,7 +291,7 @@ h3 {
   outline: 1px solid; /* use instead of border */
   margin-top: 1px;
   margin-left: 1px;
-  background-color: gold;
+  background-color: #8ac926;
 }
 
 #boatBox__patrolboat {
