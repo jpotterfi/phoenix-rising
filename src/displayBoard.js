@@ -115,8 +115,12 @@ function displayBoard(player, computer) {
               commander.id = "commander";
               commander.addEventListener("click", function () {
                 let buttonBox = document.getElementById("buttonBox");
+                let instructions = document.getElementById("instructions");
+                let header = document.getElementById("header");
                 harbor.remove();
                 buttonBox.remove();
+                instructions.innerText = "";
+                header.innerText = "";
                 createComputerBoard();
               });
               const admiral = document.createElement("button");
