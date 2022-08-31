@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battleship!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <div class="left" id="left">
+      <div class="text">
+        <h1>Battleship!</h1>
+        <h2 id="header">
+          Captain, your ships are ready to be assigned to the fleet:
+          <br /><br />
+        </h2>
+        <h3 id="instructions">
+          - Click and drag your ships from your harbor onto your battle map.
+          <br /><br />
+          - Ships may be rotated by double-clicking on them in your harbor.
+          <br /><br />
+          - Ships may not be placed adjacently to one another.
+        </h3>
+      </div>
+    </div>
+
+    <div class="row" id="content">
+      <div id="boardOne"></div>
+      <div id="boardTwo"></div>
+      <!-- <div id="buttonBox">
+        <div id="buttonBoxTop"></div>
+        <div id="buttonBoxBottom"></div>
+      </div> -->
+    </div>
+    <div class="text"></div>
+  </body>
+</html>
+
+<!-- 
+<div id="harbor">
+  <div class="boatRow">
+    <div id="boatBox__carrier">
+      <div draggable="true" id="segmented__carrier" title="Carrier">
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+      </div>
+    </div>
+    <div id="boatBox__battleship">
+      <div
+        draggable="true"
+        id="segmented__battleship"
+        title="Battleship"
+      >
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+      </div>
+    </div>
+  </div>
+  <div class="boatRow">
+    <div id="boatBox__destroyer">
+      <div draggable="true" id="segmented__destroyer" title="Destroyer">
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+      </div>
+    </div>
+    <div id="boatBox__submarine">
+      <div draggable="true" id="segmented__submarine" title="Submarine">
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+      </div>
+    </div>
+    <div id="boatBox__patrolboat">
+      <div
+        draggable="true"
+        id="segmented__patrolboat"
+        title="Patrol Boat"
+      >
+        <div class="segment"></div>
+        <div class="segment"></div>
+      </div>
+    </div>
+  </div>
+</div> -->
