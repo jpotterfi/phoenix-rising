@@ -165,6 +165,8 @@ function displayBoard(player, computer) {
               buttonBoxBottom.appendChild(replaceShips);
             }
             updatePlayerBoard(player);
+          } else {
+            box.style.backgroundColor = "white";
           }
         });
 
