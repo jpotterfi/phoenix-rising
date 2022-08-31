@@ -125,8 +125,12 @@ function displayBoard(player, computer) {
               admiral.id = "admiral";
               admiral.addEventListener("click", function () {
                 let buttonBox = document.getElementById("buttonBox");
+                let instructions = document.getElementById("instructions");
+                let header = document.getElementById("header");
                 harbor.remove();
                 buttonBox.remove();
+                instructions.innerText = "";
+                header.innerText = "";
                 // while (buttonBox.firstChild) {
                 //   buttonBox.removeChild(buttonBox.firstChild);
                 // }
@@ -265,18 +269,95 @@ function displayBoard(player, computer) {
               if (computer.coordinates[arrRow][arrColumn].isSunk()) {
                 console.log("is sunk!");
                 solveMisses(computer, arrRow, arrColumn);
+                if (computer.isOver()) {
+                  let left = document.getElementById("left");
+                  let header = document.getElementById("header");
+                  header.innerText = "Captain, you've won!";
+                  let playAgain = document.createElement("button");
+                  playAgain.id = "playAgain";
+                  playAgain.innerText = "Play Again?";
+                  playAgain.addEventListener("click", function () {
+                    let boardOne = document.getElementById("boardOne");
+                    while (boardOne.firstChild) {
+                      boardOne.removeChild(boardOne.firstChild);
+                    }
+                    let boardTwo = document.getElementById("boardTwo");
+                    while (boardTwo.firstChild) {
+                      boardTwo.removeChild(boardTwo.firstChild);
+                    }
+                    playAgain.remove();
+                    header.innerHTML =
+                      "You know the drill, Captain. Good luck!";
+                    buildHarbor();
+                    resetAll();
+                    gameLoop();
+                  });
+                  left.appendChild(playAgain);
+                }
               }
             }
             updateComputerBoard(computer);
             if (getDifficulty() == "easy") {
-              if (player.isOver() != true) {
+              if (player.isOver() != true && computer.isOver() != true) {
                 randomAttack(player);
                 updatePlayerBoard(player);
+                if (player.isOver()) {
+                  let left = document.getElementById("left");
+                  let header = document.getElementById("header");
+                  header.innerText =
+                    "Captain, we've lost the battle, but not the war!";
+                  let playAgain = document.createElement("button");
+                  playAgain.id = "playAgain";
+                  playAgain.innerText = "Play Again?";
+                  playAgain.addEventListener("click", function () {
+                    let boardOne = document.getElementById("boardOne");
+                    while (boardOne.firstChild) {
+                      boardOne.removeChild(boardOne.firstChild);
+                    }
+                    let boardTwo = document.getElementById("boardTwo");
+                    while (boardTwo.firstChild) {
+                      boardTwo.removeChild(boardTwo.firstChild);
+                    }
+                    playAgain.remove();
+                    header.innerHTML =
+                      "You know the drill, Captain. Good luck!";
+                    buildHarbor();
+                    resetAll();
+                    gameLoop();
+                  });
+                  left.appendChild(playAgain);
+                }
               }
             } else if (getDifficulty() == "hard") {
-              if (player.isOver() != true) {
+              if (player.isOver() != true && computer.isOver() != true) {
                 shipHunt(player);
                 updatePlayerBoard(player);
+                if (player.isOver()) {
+                  let left = document.getElementById("left");
+                  let header = document.getElementById("header");
+                  header.innerText =
+                    "Captain, we've lost the battle, but not the war!";
+                  let playAgain = document.createElement("button");
+                  playAgain.id = "playAgain";
+                  playAgain.innerText = "Play Again?";
+                  playAgain.addEventListener("click", function () {
+                    let boardOne = document.getElementById("boardOne");
+                    while (boardOne.firstChild) {
+                      boardOne.removeChild(boardOne.firstChild);
+                    }
+                    let boardTwo = document.getElementById("boardTwo");
+                    while (boardTwo.firstChild) {
+                      boardTwo.removeChild(boardTwo.firstChild);
+                    }
+                    playAgain.remove();
+                    header.innerHTML =
+                      "You know the drill, Captain. Good luck!";
+                    buildHarbor();
+                    resetAll();
+                    gameLoop();
+                  });
+                  left.appendChild(playAgain);
+                }
               }
             }
           }
